@@ -73,8 +73,12 @@
           text-decoration: none;
         }
 
-        .button-clicked {
-            color: white; /* Set text color to white */
+        .custom-button:active,
+        .custom-button:hover,
+        .custom-button:focus {
+            background-color: #E58256;
+            color: white;
+            outline: none; /* Remove the default focus outline */
         }
 
         .social-icons a:hover {
@@ -135,7 +139,6 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            document.getElementById('download-vcard').classList.add('button-clicked');
 
         }
 
