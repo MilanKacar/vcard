@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Business Card</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .full-screen {
+            background: linear-gradient(135deg, #E58256, #5B656C, #B3B7BB);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .custom-button {
+            border-radius: 15px;
+            background-color: #E58256;
+            border: none;
+            color: white;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* This creates space between each icon */
+        }
+
+        .social-icons a {
+            color: white; 
+            font-size: 30px; 
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="full-screen">
+        <div class="profile-picture"></div>
+        <h1>John Doe</h1>
+        <p>Web Developer</p>
+        <p>contact@example.com</p>
+        <div class="social-icons d-flex justify-content-around mt-4">
+            <!-- Social Icons -->
+            <a href="mailto:contact@example.com"><i class="fa fa-envelope"></i></a>
+            <a href="tel:+123456789"><i class="fa fa-phone"></i></a>
+            <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://calendly.com"><i class="fa-solid fa-calendar-days"></i></a>
+        </div>
+        <button id="download-vcard" class="btn custom-button mt-3">Download Contact</button>
+    </div>
+    <!-- JavaScript for vCard functionality -->
+    <script>
+        function downloadVCard() {
+            // Define the contact details
+            const fullName = 'John Doe';
+            const email = 'contact@example.com';
+            const phone = '+123456789';
+            const organization = 'Company Name';
+            const title = 'Web Developer';
+
+            // Create the vCard data with correct line breaks (\r\n)
+            let vCardData = 'BEGIN:VCARD\r\n';
+            vCardData += 'VERSION:3.0\r\n';
+            vCardData += `N:;${fullName};;;\r\n`;
+            vCardData += `FN:${fullName}\r\n`;
+            vCardData += `ORG:${organization}\r\n`;
+            vCardData += `TITLE:${title}\r\n`;
+            vCardData += `TEL;TYPE=WORK,VOICE:${phone}\r\n`;
+            vCardData += `EMAIL;TYPE=PREF,INTERNET:${email}\r\n`;
+            vCardData += 'END:VCARD';
+
+            // Create a Blob from the vCard data
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+
+            // Create a link element, use it to download the Blob
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'contact.vcf';
+
+            // Append the link to the body, click it, and then remove it
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Add event listener to the button
+        document.getElementById('download-vcard').addEventListener('click', downloadVCard);
+    </script>
+</body>
+</html>
