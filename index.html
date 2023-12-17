@@ -20,6 +20,24 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            position: relative; /* Set position to relative for absolute positioning of the footer */
+        }
+
+        .content-wrapper {
+            margin-top: -16vh; /* Pull content slightly upwards */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .footer {
+            color: white;
+            font-size: 14px;
+            position: absolute;
+            bottom: 10px; /* Keep footer at the bottom */
+            width: 100%;
+            text-align: center;
         }
         .profile-picture {
             width: 100px;
@@ -54,6 +72,7 @@
 </head>
 <body>
     <div class="full-screen">
+      <div class="content-wrapper"></div>
         <div class="profile-picture"></div>
         <h1>John Doe</h1>
         <p>Web Developer</p>
@@ -67,7 +86,9 @@
             <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://calendly.com"><i class="fa-solid fa-calendar-days"></i></a>
         </div>
-        <button id="download-vcard" class="btn custom-button mt-3">Download Contact</button>
+        <button id="download-vcard" class="btn custom-button mt-3">Preuzmi Kontakt</button>
+        <div class="footer">Powered by klikni!</div>
+      </div>
     </div>
     <!-- JavaScript for vCard functionality -->
     <script>
