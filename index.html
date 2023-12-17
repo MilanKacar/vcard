@@ -6,8 +6,12 @@
     <title>Modern Business Card</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
         body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif; /* Apply Roboto font to the entire document */
             height: 100%;
             margin: 0;
         }
@@ -24,7 +28,7 @@
         }
 
         .content-wrapper {
-            margin-top: -16vh; /* Pull content slightly upwards */
+            margin-top: -10vh; /* Pull content slightly upwards */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -47,26 +51,34 @@
             margin-bottom: 20px;
         }
         .custom-button {
-            border-radius: 15px;
-            background-color: #E58256;
-            border: none;
-            color: white;
+          font-family: 'Roboto', sans-serif;
+          padding: 11px 20px; 
+          border-radius: 15px;
+          background-color: #E58256;
+          border: none;
+          color: white;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s, box-shadow 0.3s;
         }
         .social-icons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px; /* This creates space between each icon */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px; /* This creates space between each icon */
         }
 
         .social-icons a {
-            color: white; 
-            font-size: 30px; 
-            text-decoration: none;
+          color: white; 
+          font-size: 30px; 
+          text-decoration: none;
+        }
+
+        .button-clicked {
+            color: white; /* Set text color to white */
         }
 
         .social-icons a:hover {
-            color: #ddd;
+          color: #ddd;
         }
     </style>
 </head>
@@ -123,6 +135,8 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            document.getElementById('download-vcard').classList.add('button-clicked');
+
         }
 
         // Add event listener to the button
